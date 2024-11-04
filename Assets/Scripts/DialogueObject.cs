@@ -109,6 +109,11 @@ public class DialogueObject
                     startOfResponses = currLineText.Substring(0, startOfResponseDestinations).LastIndexOf("\n\n");
                 }
 
+                if(startOfResponses == -1)
+                {
+                    Debug.Log(currLineText);
+                }
+
                 // Extract Title
                 int titleStart = 0;
                 int titleEnd = tagsPresent ? currLineText.IndexOf("[") : endOfTitle;
@@ -154,13 +159,13 @@ public class DialogueObject
                         }
 
                         Response curResponse = new Response();
-                        int destinationStart = curResponseData.IndexOf("[[");
+                        int destinationStart = curResponseData.IndexOf("-");
                         int destinationEnd = curResponseData.IndexOf("]]");
                         UnityEngine.Assertions.Assert.IsFalse(destinationStart == -1, "No destination around in node titled, '" + curNode.title + "'");
                         UnityEngine.Assertions.Assert.IsFalse(destinationEnd == -1, "No destination around in node titled, '" + curNode.title + "'");
-                        string destination = curResponseData.Substring(destinationStart + 2, (destinationEnd - destinationStart) - 2);
+                        string destination = curResponseData.Substring(destinationStart + 2, destinationEnd - destinationStart - 2);
                         curResponse.destinationNode = destination;
-                        curResponse.displayText = curResponseData.Substring(2, destinationEnd - 2);
+                        curResponse.displayText = curResponseData.Substring(2, destinationStart - 2);
 
                         curNode.responses.Add(curResponse);
                     }
