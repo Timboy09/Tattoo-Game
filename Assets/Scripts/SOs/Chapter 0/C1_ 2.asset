@@ -18,3 +18,7 @@ MonoBehaviour:
   - The shop looks cool, love.
   - Did you set everything up? Anything I can help with?
   - Perhaps..
+  branchAStartIndex: 0
+  branchBStartIndex: 0
+  branchCStartIndex: 0
+  branchEndIndex: 0

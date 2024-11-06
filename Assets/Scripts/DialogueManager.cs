@@ -23,6 +23,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI dialoguesText;
 
+    [SerializeField]
+    private Image charImg;
+
     [Header("Buttons")]
     [SerializeField]
     private Button continueBtn;
@@ -39,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private Button optionCBtn;
 
-    [Header("Text Display Options")]
+    [Header("Character Display Options")]
     [SerializeField]
     private Color playerColor;
 
@@ -57,6 +60,21 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     private Color nuryColor;
+
+    [SerializeField]
+    private Sprite reyaSpr;
+
+    [SerializeField]
+    private Sprite qiSpr;
+
+    [SerializeField]
+    private Sprite nayrSpr;
+
+    [SerializeField]
+    private Sprite urzaSpr;
+
+    [SerializeField]
+    private Sprite nurySpr;
 
     private const string reyaName = "Reya";
     private const string qiName = "Qi";
@@ -132,6 +150,7 @@ public class DialogueManager : MonoBehaviour
 
         optionsPanel.SetActive(false);
         continueBtn.gameObject.SetActive(true);
+        charImg.gameObject.SetActive(true);
 
         #region Handle Character Box Rendering         
 
@@ -139,45 +158,55 @@ public class DialogueManager : MonoBehaviour
         {
             case Character.SCENE:
                 charNameText.text = "";
+                charImg.sprite = null;
                 break;
 
             case Character.PLAYER:
                 charNameText.text = playerName;
                 charNameText.color = playerColor;
+                charImg.sprite = null;
                 break;
 
             case Character.REYA:
                 charNameText.text = reyaName;
                 charNameText.color = reyaColor;
+                charImg.sprite = reyaSpr;
                 break;
 
             case Character.QI:
                 charNameText.text = qiName;
                 charNameText.color = qiColor;
+                charImg.sprite = qiSpr;
                 break;
 
             case Character.NAYR:
                 charNameText.text = nayrName;
                 charNameText.color = nayrColor;
+                charImg.sprite = nayrSpr;
                 break;
 
             case Character.URZA:
                 charNameText.text = urzaName;
                 charNameText.color = urzaColor;
+                charImg.sprite = urzaSpr;
                 break;
 
             case Character.NURY:
                 charNameText.text = nuryName;
                 charNameText.color = nuryColor;
+                charImg.sprite = nurySpr;
                 break;
 
             case Character.CHOICE:
                 charNameText.text = "";
+                charImg.sprite = null;
                 optionsPanel.SetActive(true);
                 continueBtn.gameObject.SetActive(false);
                 HandleOptions();
                 break;
         }
+
+        charImg.preserveAspect = true;
 
         if (charNameText.text == "")
         {
@@ -186,6 +215,11 @@ public class DialogueManager : MonoBehaviour
         else
         {
             charNameBox.gameObject.SetActive(true);
+        }
+
+        if(charImg.sprite == null)
+        {
+            charImg.gameObject.SetActive(false);
         }
 
         #endregion
