@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19999999, g: 0.19999999, b: 0.19999999, a: 1}
+  m_Color: {r: 0.42745098, g: 0.42745098, b: 0.42745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19999999, g: 0.19999999, b: 0.19999999, a: 1}
+  m_Color: {r: 0.42745098, g: 0.42745098, b: 0.42745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2103,6 +2103,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df3174930c2743940bba526d6db3534f, type: 2}
   - {fileID: 11400000, guid: 6ae3441b432088b438e51a071f1cf5ee, type: 2}
   - {fileID: 11400000, guid: c4b046fe1a89b9343b4ea9e76a4ac932, type: 2}
+  - {fileID: 11400000, guid: ccf062ee2517f094cb4927dd27bba71b, type: 2}
+  - {fileID: 11400000, guid: fdef29470fa5b1d4899eb4d87a46b378, type: 2}
+  - {fileID: 11400000, guid: 7cc32aa9f9a52484595abf70c38140b7, type: 2}
+  - {fileID: 11400000, guid: e4e1354c30917064b889a0bfed6a7c4e, type: 2}
+  - {fileID: 11400000, guid: d0f828ee97f9f2d4bad9da2178e7efd5, type: 2}
   charNameBox: {fileID: 1915549330}
   charNameText: {fileID: 682764893}
   dialoguesText: {fileID: 468299692}
@@ -2123,6 +2128,7 @@ MonoBehaviour:
   nayrSpr: {fileID: 21300000, guid: 22187e2a29c239149b39a6965f10a36c, type: 3}
   urzaSpr: {fileID: 0}
   nurySpr: {fileID: 0}
+  tattooShapes: 
 --- !u!114 &779984664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3470,7 +3476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19999999, g: 0.19999999, b: 0.19999999, a: 1}
+  m_Color: {r: 0.42745098, g: 0.42745098, b: 0.42745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4602,16 +4608,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0e85e78ecdb646a4b9a32b48a23f89a5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

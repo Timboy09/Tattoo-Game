@@ -164,7 +164,6 @@ public class DialogueManager : MonoBehaviour
             case Character.PLAYER:
                 charNameText.text = playerName;
                 charNameText.color = playerColor;
-                charImg.sprite = null;
                 break;
 
             case Character.REYA:
@@ -198,11 +197,14 @@ public class DialogueManager : MonoBehaviour
                 break;
 
             case Character.CHOICE:
-                charNameText.text = "";
-                charImg.sprite = null;
                 optionsPanel.SetActive(true);
                 continueBtn.gameObject.SetActive(false);
                 HandleOptions();
+                break;
+
+            case Character.CLUE:
+                continueBtn.gameObject.SetActive(false);
+                ClueInteractions();
                 break;
         }
 
@@ -231,11 +233,93 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    #region Clue Interactions
+
+    private string[] triangleClues = { "APEX" };
+    private string[] circleClues = { "ORBIT" };
+    private string[] quadClues = { "FRAME" };
+
+    [SerializeField]
+    private List<Shapes> tattooShapes;
+
+    private string LastClickedWord;
+
+    private bool startClueDetection = false;
+
+    public void ClueInteractions()
+    {
+        startClueDetection = true;
+        tattooShapes = new List<Shapes>();
+        for (int i = 0; i < chapter_zero[currentDialogueIndex].tattooShapes.Count; i++)
+        {
+            tattooShapes.Add(chapter_zero[currentDialogueIndex].tattooShapes[i]);
+        }
+    }
+
+    private void Update()
+    {
+        if(tattooShapes.Count == 0 && startClueDetection)
+        {
+            startClueDetection = false;
+            continueBtn.gameObject.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonDown(0) && startClueDetection && tattooShapes.Count > 0)
+        {
+            var wordIndex = TMP_TextUtilities.FindIntersectingWord(dialoguesText, Input.mousePosition, null);
+
+            if (wordIndex != -1)
+            {
+                LastClickedWord = dialoguesText.textInfo.wordInfo[wordIndex].GetWord();
+
+                foreach (var clue in triangleClues)
+                {
+                    if(LastClickedWord == clue)
+                    {
+                        Debug.Log("Clicked on " + LastClickedWord);
+                        var targetIndex = tattooShapes.IndexOf(Shapes.TRIANGLE);
+                        tattooShapes.RemoveAt(targetIndex);
+                    }
+                }
+
+                foreach (var clue in circleClues)
+                {
+                    if (LastClickedWord == clue)
+                    {
+                        Debug.Log("Clicked on " + LastClickedWord);
+                        var targetIndex = tattooShapes.IndexOf(Shapes.CIRCLE);
+                        tattooShapes.RemoveAt(targetIndex);
+                    }
+                }
+
+                foreach (var clue in quadClues)
+                {
+                    if (LastClickedWord == clue)
+                    {
+                        Debug.Log("Clicked on " + LastClickedWord);
+                        var targetIndex = tattooShapes.IndexOf(Shapes.QUAD);
+                        tattooShapes.RemoveAt(targetIndex);
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
     public void HandleOptions()
     {
         optionABtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionAIndex];
         optionBBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionBIndex];
-        optionCBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionCIndex];
+        if(chapter_zero[currentDialogueIndex].branchCStartIndex == 0)
+        {
+            optionCBtn.gameObject.SetActive(false);
+        }
+        else
+        {
+            optionCBtn.gameObject.SetActive(true);
+            optionCBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionCIndex];
+        }
     }
 
     public void DisplayNextSentence()
@@ -264,18 +348,4 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.02f);    
         }
     }
-}
-
-public enum Character
-{
-    MIN,
-    SCENE,
-    PLAYER,
-    REYA,
-    QI,
-    NAYR,
-    URZA,
-    NURY,
-    CHOICE,
-    MAX
 }

@@ -15,4 +15,30 @@ public class DialogueSO : ScriptableObject
     public int branchCStartIndex;
 
     public int branchEndIndex;
+
+    public List<Shapes> tattooShapes;
+}
+
+public enum Character
+{
+    MIN,
+    SCENE,
+    PLAYER,
+    REYA,
+    QI,
+    NAYR,
+    URZA,
+    NURY,
+    CHOICE,
+    CLUE,
+    MAX
+}
+
+public enum Shapes
+{
+    MIX,
+    TRIANGLE,
+    CIRCLE,
+    QUAD,
+    MAX
 }
