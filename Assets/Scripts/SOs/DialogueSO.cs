@@ -7,8 +7,12 @@ public class DialogueSO : ScriptableObject
 {
     public Character character;
 
-    public string charName;
-
     [TextArea(3,10)]
     public string[] dialogues;
+
+    public int branchAStartIndex;
+    public int branchBStartIndex;
+    public int branchCStartIndex;
+
+    public int branchEndIndex;
 }

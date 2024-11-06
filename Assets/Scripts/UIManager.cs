@@ -9,5 +9,5 @@ public class UIManager : MonoBehaviour
     private GameObject mainMenuPanel;
 
     [SerializeField]
-    private GameObject dialoguePanel;
+    private GameObject dialoguePanel;    
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
+  m_Name: C1_ 9
+  m_EditorClassIdentifier: 
+  character: 3
+  dialogues:
+  - Alright! You got it!
+  - "While I\u2019m here, let\u2019s test your skills."
+  - Ready to ink your first tattoo?
+  branchAStartIndex: 0
+  branchBStartIndex: 0
+  branchCStartIndex: 0
+  branchEndIndex: 0

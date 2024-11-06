@@ -6,7 +6,16 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField]
+    private List<DialogueSO> chapter_zero;
+
+    private int currentDialogueIndex = -1;
+    private int branchEndIndex = -1;
+
     private Queue<string> dialogues;
+
+    [SerializeField]
+    private GameObject charNameBox;
 
     [SerializeField]
     private TextMeshProUGUI charNameText;
@@ -14,8 +23,53 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI dialoguesText;
 
+    [Header("Buttons")]
     [SerializeField]
     private Button continueBtn;
+
+    [SerializeField]
+    private GameObject optionsPanel;
+
+    [SerializeField]
+    private Button optionABtn;
+
+    [SerializeField]
+    private Button optionBBtn;
+
+    [SerializeField]
+    private Button optionCBtn;
+
+    [Header("Text Display Options")]
+    [SerializeField]
+    private Color playerColor;
+
+    [SerializeField]
+    private Color reyaColor;
+
+    [SerializeField]
+    private Color qiColor;
+
+    [SerializeField]
+    private Color nayrColor;
+
+    [SerializeField]
+    private Color urzaColor;
+
+    [SerializeField]
+    private Color nuryColor;
+
+    private const string reyaName = "Reya";
+    private const string qiName = "Qi";
+    private const string nayrName = "Nayr";
+    private const string urzaName = "Urza";
+    private const string nuryName = "Nury";
+    private const string playerName = "Player"; //THIS IS TEMP, NEED INPUT FROM PLAYER
+
+    private const int optionAIndex = 1;
+    private const int optionBIndex = 2;
+    private const int optionCIndex = 3;
+
+    private bool isBranch = false;
 
     private void Start()
     {
@@ -24,17 +78,130 @@ public class DialogueManager : MonoBehaviour
         {
             DisplayNextSentence();
         });
+
+        optionABtn.onClick.AddListener(() =>
+        {
+            branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            currentDialogueIndex = chapter_zero[currentDialogueIndex].branchAStartIndex;
+            StartDialogue(chapter_zero[currentDialogueIndex]);
+            isBranch = true;
+        });
+
+        optionBBtn.onClick.AddListener(() =>
+        {
+            branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            currentDialogueIndex = chapter_zero[currentDialogueIndex].branchBStartIndex;
+            StartDialogue(chapter_zero[currentDialogueIndex]);
+            isBranch = true;
+        });
+
+        optionCBtn.onClick.AddListener(() =>
+        {
+            branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            currentDialogueIndex = chapter_zero[currentDialogueIndex].branchCStartIndex;
+            StartDialogue(chapter_zero[currentDialogueIndex]);
+            isBranch = true;
+        });
+
+        StartChapterZero();
     }
 
-    public void StartDialogue(Dialogue _dialogue)
+    public void StartChapterZero()
+    {
+        //THIS IS TEMPORARY AND NEEDS TO CHANGE CHAPTERS AUTOMATICALLY
+
+        if (chapter_zero.Count != 0 && currentDialogueIndex != chapter_zero.Count - 1)
+        {
+            if (!isBranch)
+            {
+                currentDialogueIndex++;
+            }
+            else
+            {
+                currentDialogueIndex = branchEndIndex;
+                isBranch = false;
+                branchEndIndex = -1;
+            }
+            StartDialogue(chapter_zero[currentDialogueIndex]);
+        }
+    }
+
+    public void StartDialogue(DialogueSO _dialogue)
     {
         dialogues.Clear();
-        charNameText.text = _dialogue.charName;
-        foreach (var sentence in dialogues)
+
+        optionsPanel.SetActive(false);
+        continueBtn.gameObject.SetActive(true);
+
+        #region Handle Character Box Rendering         
+
+        switch (_dialogue.character)
+        {
+            case Character.SCENE:
+                charNameText.text = "";
+                break;
+
+            case Character.PLAYER:
+                charNameText.text = playerName;
+                charNameText.color = playerColor;
+                break;
+
+            case Character.REYA:
+                charNameText.text = reyaName;
+                charNameText.color = reyaColor;
+                break;
+
+            case Character.QI:
+                charNameText.text = qiName;
+                charNameText.color = qiColor;
+                break;
+
+            case Character.NAYR:
+                charNameText.text = nayrName;
+                charNameText.color = nayrColor;
+                break;
+
+            case Character.URZA:
+                charNameText.text = urzaName;
+                charNameText.color = urzaColor;
+                break;
+
+            case Character.NURY:
+                charNameText.text = nuryName;
+                charNameText.color = nuryColor;
+                break;
+
+            case Character.CHOICE:
+                charNameText.text = "";
+                optionsPanel.SetActive(true);
+                continueBtn.gameObject.SetActive(false);
+                HandleOptions();
+                break;
+        }
+
+        if (charNameText.text == "")
+        {
+            charNameBox.gameObject.SetActive(false);
+        }
+        else
+        {
+            charNameBox.gameObject.SetActive(true);
+        }
+
+        #endregion
+
+        foreach (var sentence in _dialogue.dialogues)
         {
             dialogues.Enqueue(sentence);
         }
         DisplayNextSentence();
+    }
+
+    public void HandleOptions()
+    {
+        optionABtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionAIndex];
+        optionBBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionBIndex];
+        optionCBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionCIndex];
     }
 
     public void DisplayNextSentence()
@@ -51,8 +218,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        //End Conversation : Load Tattoo Game / Next Chapter
-        Debug.Log("End of Conversation");
+        StartChapterZero();
     }
 
     private IEnumerator TypeSentence(string _senence)
@@ -61,7 +227,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in _senence.ToCharArray())
         {
             dialoguesText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.02f);    
         }
     }
 }
@@ -69,11 +235,13 @@ public class DialogueManager : MonoBehaviour
 public enum Character
 {
     MIN,
+    SCENE,
     PLAYER,
     REYA,
     QI,
     NAYR,
     URZA,
     NURY,
+    CHOICE,
     MAX
 }
