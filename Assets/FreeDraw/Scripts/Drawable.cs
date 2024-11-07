@@ -21,10 +21,10 @@ namespace FreeDraw
         public event Action<DollarPoint []> OnDrawFinished;
         
         // PEN COLOUR
-        public static Color Pen_Colour = Color.red; // Change these to change the default drawing settings
+        public static Color Pen_Colour = Color.black; // Change these to change the default drawing settings
 
         // PEN WIDTH (actually, it's a radius, in pixels)
-        public static int Pen_Width = 3;
+        public static int Pen_Width = 5;
 
 
         public delegate void Brush_Function(Vector2 world_position);

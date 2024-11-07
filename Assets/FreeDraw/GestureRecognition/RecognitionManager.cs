@@ -19,7 +19,7 @@ public class RecognitionManager : MonoBehaviour
     private GestureTemplates _templates => GestureTemplates.Get();
     private static readonly DollarOneRecognizer _dollarOneRecognizer = new DollarOneRecognizer();
     private static readonly DollarPRecognizer _dollarPRecognizer = new DollarPRecognizer();
-    private IRecognizer _currentRecognizer = _dollarOneRecognizer;
+    private IRecognizer _currentRecognizer = _dollarPRecognizer;
     private RecognizerState _state = RecognizerState.RECOGNITION;
 
     public enum RecognizerState
@@ -48,10 +48,22 @@ public class RecognitionManager : MonoBehaviour
     private void Start()
     {
         _drawable.OnDrawFinished += OnDrawFinished;
-        _templateModeButton.onClick.AddListener(() => SetupState(RecognizerState.TEMPLATE));
-        _recognitionModeButton.onClick.AddListener(() => SetupState(RecognizerState.RECOGNITION));
-        _reviewTemplates.onClick.AddListener(() => SetupState(RecognizerState.TEMPLATE_REVIEW));
-        _recognitionPanel.Initialize(SwitchRecognitionAlgorithm);
+        if (_templateModeButton != null) 
+        {
+            _templateModeButton.onClick.AddListener(() => SetupState(RecognizerState.TEMPLATE));
+        }
+        if (_recognitionModeButton != null)
+        {
+            _recognitionModeButton.onClick.AddListener(() => SetupState(RecognizerState.RECOGNITION));
+        }
+        if (_reviewTemplates != null)
+        {
+            _reviewTemplates.onClick.AddListener(() => SetupState(RecognizerState.TEMPLATE_REVIEW));
+        }
+        if (_recognitionPanel != null)
+        {
+            _recognitionPanel.Initialize(SwitchRecognitionAlgorithm);
+        }
 
         SetupState(_state);
     }
@@ -72,15 +84,36 @@ public class RecognitionManager : MonoBehaviour
     private void SetupState(RecognizerState state)
     {
         _state = state;
-        _templateModeButton.image.color = _state == RecognizerState.TEMPLATE ? Color.green : Color.white;
-        _recognitionModeButton.image.color = _state == RecognizerState.RECOGNITION ? Color.green : Color.white;
-        _reviewTemplates.image.color = _state == RecognizerState.TEMPLATE_REVIEW ? Color.green : Color.white;
-        _templateName.gameObject.SetActive(_state == RecognizerState.TEMPLATE);
-        _recognitionResult.gameObject.SetActive(_state == RecognizerState.RECOGNITION);
+        if (_templateModeButton != null)
+        {
+            _templateModeButton.image.color = _state == RecognizerState.TEMPLATE ? Color.green : Color.white;
+        }
+        if (_recognitionModeButton != null)
+        {
+            _recognitionModeButton.image.color = _state == RecognizerState.RECOGNITION ? Color.green : Color.white;
+        }
+        if (_reviewTemplates != null)
+        {
+            _reviewTemplates.image.color = _state == RecognizerState.TEMPLATE_REVIEW ? Color.green : Color.white;
+        }
+        if (_templateName != null)
+        {
+            _templateName.gameObject.SetActive(_state == RecognizerState.TEMPLATE);
+        }
+        if(_recognitionResult != null)
+        {
+            _recognitionResult.gameObject.SetActive(_state == RecognizerState.RECOGNITION);
+        }
 
         _drawable.gameObject.SetActive(state != RecognizerState.TEMPLATE_REVIEW);
-        _templateReviewPanel.SetVisibility(state == RecognizerState.TEMPLATE_REVIEW);
-        _recognitionPanel.SetVisibility(state == RecognizerState.RECOGNITION);
+        if (_templateReviewPanel != null)
+        {
+            _templateReviewPanel.SetVisibility(state == RecognizerState.TEMPLATE_REVIEW);
+        }
+        if (_recognitionPanel != null)
+        {
+            _recognitionPanel.SetVisibility(state == RecognizerState.RECOGNITION);
+        }
     }
 
     private void OnDrawFinished(DollarPoint[] points)
@@ -107,9 +140,14 @@ public class RecognitionManager : MonoBehaviour
                 resultText = $"Recognized: {result.Item1}, Distance: {result.Item2}";
             }
 
-            _recognitionResult.text = resultText;
+            //_recognitionResult.text = resultText;
             Debug.Log(resultText);
         }
+    }
+
+    private void ShapeRecognised(string _resultText)
+    {
+
     }
 
     private void OnApplicationQuit()
