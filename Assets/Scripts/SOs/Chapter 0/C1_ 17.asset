@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
+  m_Name: C1_ 17
+  m_EditorClassIdentifier: 
+  character: 3
+  dialogues:
+  - "Aww that\u2019s not quite what I had in mind."
+  - Try again. LISTEN carefully this time.
+  - "You might lose customers if your aren\u2019t careful."
+  branchAStartIndex: 0
+  branchBStartIndex: 0
+  branchCStartIndex: 0
+  branchEndIndex: 13
+  tattooShapes: 010000000200000003000000
+  forceBranchIndex: 0

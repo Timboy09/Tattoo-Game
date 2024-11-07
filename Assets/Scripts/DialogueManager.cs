@@ -99,7 +99,15 @@ public class DialogueManager : MonoBehaviour
 
         optionABtn.onClick.AddListener(() =>
         {
-            branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            if (!chapter_zero[currentDialogueIndex].forceBranchIndex)
+            {
+                branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            }
+            else
+            {
+                branchEndIndex = chapter_zero[currentDialogueIndex + optionAIndex].branchEndIndex;
+                Debug.Log("Forced Branch to: " + branchEndIndex);
+            }
             currentDialogueIndex = chapter_zero[currentDialogueIndex].branchAStartIndex;
             StartDialogue(chapter_zero[currentDialogueIndex]);
             isBranch = true;
@@ -107,7 +115,15 @@ public class DialogueManager : MonoBehaviour
 
         optionBBtn.onClick.AddListener(() =>
         {
-            branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            if (!chapter_zero[currentDialogueIndex].forceBranchIndex)
+            {
+                branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            }
+            else
+            {
+                branchEndIndex = chapter_zero[currentDialogueIndex + optionBIndex].branchEndIndex;
+                Debug.Log("Forced Branch to: " + branchEndIndex);
+            }
             currentDialogueIndex = chapter_zero[currentDialogueIndex].branchBStartIndex;
             StartDialogue(chapter_zero[currentDialogueIndex]);
             isBranch = true;
@@ -115,7 +131,15 @@ public class DialogueManager : MonoBehaviour
 
         optionCBtn.onClick.AddListener(() =>
         {
-            branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            if (!chapter_zero[currentDialogueIndex].forceBranchIndex)
+            {
+                branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+            }
+            else
+            {
+                branchEndIndex = chapter_zero[currentDialogueIndex + optionCIndex].branchEndIndex;
+                Debug.Log("Forced Branch to: " + branchEndIndex);
+            }
             currentDialogueIndex = chapter_zero[currentDialogueIndex].branchCStartIndex;
             StartDialogue(chapter_zero[currentDialogueIndex]);
             isBranch = true;
@@ -239,15 +263,34 @@ public class DialogueManager : MonoBehaviour
     private string[] circleClues = { "ORBIT" };
     private string[] quadClues = { "FRAME" };
 
-    [SerializeField]
     private List<Shapes> tattooShapes;
 
     private string LastClickedWord;
 
     private bool startClueDetection = false;
 
+    [Header("Tattoo Clues")]
+    [SerializeField]
+    private GameObject hintPanel;
+
+    [SerializeField]
+    private GameObject shapeBubble;
+
+    [SerializeField]
+    private Image clickedShape;
+
+    [SerializeField]
+    private Sprite triangleSpr;
+
+    [SerializeField]
+    private Sprite circleSpr;
+
+    [SerializeField]
+    private Sprite quadSpr;
+
     public void ClueInteractions()
     {
+        hintPanel.SetActive(true);
         startClueDetection = true;
         tattooShapes = new List<Shapes>();
         for (int i = 0; i < chapter_zero[currentDialogueIndex].tattooShapes.Count; i++)
@@ -258,10 +301,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if(tattooShapes.Count == 0 && startClueDetection)
+        if(tattooShapes != null && tattooShapes.Count == 0 && startClueDetection)
         {
             startClueDetection = false;
             continueBtn.gameObject.SetActive(true);
+            hintPanel.SetActive(false);
         }
 
         if (Input.GetMouseButtonDown(0) && startClueDetection && tattooShapes.Count > 0)
@@ -276,9 +320,14 @@ public class DialogueManager : MonoBehaviour
                 {
                     if(LastClickedWord == clue)
                     {
-                        Debug.Log("Clicked on " + LastClickedWord);
                         var targetIndex = tattooShapes.IndexOf(Shapes.TRIANGLE);
-                        tattooShapes.RemoveAt(targetIndex);
+                        if (targetIndex != -1)
+                        {
+                            tattooShapes.RemoveAt(targetIndex);
+                            shapeBubble.SetActive(true);
+                            clickedShape.sprite = triangleSpr;
+                        }
+                        
                     }
                 }
 
@@ -286,9 +335,13 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (LastClickedWord == clue)
                     {
-                        Debug.Log("Clicked on " + LastClickedWord);
                         var targetIndex = tattooShapes.IndexOf(Shapes.CIRCLE);
-                        tattooShapes.RemoveAt(targetIndex);
+                        if(targetIndex != -1)
+                        {
+                            tattooShapes.RemoveAt(targetIndex);
+                            shapeBubble.SetActive(true);
+                            clickedShape.sprite = circleSpr;
+                        }                        
                     }
                 }
 
@@ -296,9 +349,13 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (LastClickedWord == clue)
                     {
-                        Debug.Log("Clicked on " + LastClickedWord);
                         var targetIndex = tattooShapes.IndexOf(Shapes.QUAD);
-                        tattooShapes.RemoveAt(targetIndex);
+                        if(targetIndex != -1)
+                        {
+                            tattooShapes.RemoveAt(targetIndex);
+                            shapeBubble.SetActive(true);
+                            clickedShape.sprite = quadSpr;
+                        }                        
                     }
                 }
             }
@@ -336,6 +393,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        shapeBubble.SetActive(false);
         StartChapterZero();
     }
 

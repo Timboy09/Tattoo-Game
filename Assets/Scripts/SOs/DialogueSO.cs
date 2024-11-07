@@ -17,6 +17,8 @@ public class DialogueSO : ScriptableObject
     public int branchEndIndex;
 
     public List<Shapes> tattooShapes;
+
+    public bool forceBranchIndex;
 }
 
 public enum Character
@@ -31,6 +33,7 @@ public enum Character
     NURY,
     CHOICE,
     CLUE,
+    GAME,
     MAX
 }
 
