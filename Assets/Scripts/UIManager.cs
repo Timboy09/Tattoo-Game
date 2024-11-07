@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Main Menu")]
     [SerializeField]
-    private GameObject mainMenuPanel;
+    public GameObject mainMenuPanel;
 
     [SerializeField]
     private Button playBtn;
@@ -34,9 +34,8 @@ public class UIManager : MonoBehaviour
     private GameObject quitPanel;
 
 
-    [Header("Game")]
-    [SerializeField]
-    private GameObject gamePanel;
+    [Header("Dialogue")]
+    public GameObject dialoguePanel;
 
     private void Start()
     {
@@ -64,7 +63,7 @@ public class UIManager : MonoBehaviour
         playBtn.onClick.AddListener(() =>
         {
             mainMenuPanel.SetActive(false);
-            gamePanel.SetActive(true);
+            dialoguePanel.SetActive(true);
         });
 
         #region Credits

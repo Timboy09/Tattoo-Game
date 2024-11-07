@@ -6,6 +6,8 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameManager gameManager;
+
     [SerializeField]
     private List<DialogueSO> chapter_zero;
 
@@ -91,6 +93,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.instance;
         dialogues = new Queue<string>();
         continueBtn.onClick.AddListener(() =>
         {
@@ -145,13 +148,16 @@ public class DialogueManager : MonoBehaviour
             isBranch = true;
         });
 
-        StartChapterZero();
+        switch (gameManager.currentChapter)
+        {
+            case 0:
+                StartChapterZero();
+                break;
+        }
     }
 
     public void StartChapterZero()
     {
-        //THIS IS TEMPORARY AND NEEDS TO CHANGE CHAPTERS AUTOMATICALLY
-
         if (chapter_zero.Count != 0 && currentDialogueIndex != chapter_zero.Count - 1)
         {
             if (!isBranch)
@@ -230,6 +236,10 @@ public class DialogueManager : MonoBehaviour
                 continueBtn.gameObject.SetActive(false);
                 ClueInteractions();
                 break;
+
+            case Character.GAME:
+                gameManager.StartTattooGame();
+                break;
         }
 
         charImg.preserveAspect = true;
@@ -293,9 +303,11 @@ public class DialogueManager : MonoBehaviour
         hintPanel.SetActive(true);
         startClueDetection = true;
         tattooShapes = new List<Shapes>();
+        gameManager.tattooShapes = new List<Shapes>();
         for (int i = 0; i < chapter_zero[currentDialogueIndex].tattooShapes.Count; i++)
         {
             tattooShapes.Add(chapter_zero[currentDialogueIndex].tattooShapes[i]);
+            gameManager.tattooShapes.Add(chapter_zero[currentDialogueIndex].tattooShapes[i]);
         }
     }
 
