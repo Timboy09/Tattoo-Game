@@ -12,9 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
   m_Name: C1_ 22
   m_EditorClassIdentifier: 
-  character: 1
+  character: 3
   dialogues:
-  - Mentor - Unlock Reya's Assistance with difficult customers.
+  - Oh..ho..
+  - "..who knew that\u2019s how you saw me."
+  - 'Maybe I should start calling you, <color=#00FFFF>[*shona* ]</color>
+
+
+
+    <color=#00FFFF>[*shone*
+    - Bengali term for endearment.]</color>'
+  - 'Maybe I should start calling you, <color=#00FFFF>[*shona*]</color>
+
+
+
+    <color=#00FFFF>[*shone*
+    - Bengali term for endearment.]</color>'
+  - Let's see how you perform this week.
+  - "Well, I should head back. I\u2019ll drop by soon. "
+  - 'All the very best ______. '
+  - "You\u2019re all grown up."
+  - "You\u2019re all grown up."
+  - '*Jingle Jingle.*
+
+
+    THE END'
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

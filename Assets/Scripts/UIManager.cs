@@ -44,6 +44,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject tattooWarningPanel;
 
+    public GameObject tattooCompletionPanel;
+
+    public GameObject optionsPanel;
+
     public TextMeshProUGUI tattooCompletionText;
 
     private void Start()

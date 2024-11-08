@@ -185,6 +185,7 @@ public class RecognitionManager : MonoBehaviour
         if(gameManager.tattooShapes.Count == 0)
         {
             Debug.Log("Tattoo Complete");
+            StartCoroutine(gameManager.EndTattooGame());
         }
     }
 

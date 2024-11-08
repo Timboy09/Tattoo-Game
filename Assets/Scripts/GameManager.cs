@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public int currentChapter = 0;
     public UIManager uiManager;
+    public DialogueManager dialogueManager;
     public List<Shapes> tattooShapes;
 
     [HideInInspector] public int tattooCompletionIndex;
@@ -114,9 +116,18 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    public void StartFlairGame()
+    {
+        uiManager.dialoguePanel.SetActive(false);
+        uiManager.optionsPanel.SetActive(true);
+        gameObj.SetActive(true);
+        uiManager.gamePanel.SetActive(true);
+    }
+
     public void StartTattooGame()
     {
         uiManager.dialoguePanel.SetActive(false);
+        uiManager.tattooCompletionPanel.SetActive(true);
         gameObj.SetActive(true);
         uiManager.gamePanel.SetActive(true);
         tattooCompletionTotal = tattooShapes.Count;
@@ -145,5 +156,16 @@ public class GameManager : MonoBehaviour
                 gameObj.GetComponent<SpriteRenderer>().sprite = nuryTattooBg;
                 break;
         }
+    }
+
+    public IEnumerator EndTattooGame()
+    {
+        yield return new WaitForSeconds(1f);
+        dialogueManager.currentDialogueIndex--;
+        uiManager.dialoguePanel.SetActive(true);
+        uiManager.tattooCompletionPanel.SetActive(false);
+        gameObj.SetActive(false);
+        uiManager.gamePanel.SetActive(false);
+        dialogueManager.StartChapterZero();
     }
 }

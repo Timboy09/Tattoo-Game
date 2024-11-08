@@ -12,15 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
   m_Name: C1_ 21
   m_EditorClassIdentifier: 
-  character: 8
-  dialogues:
-  - '[Add your Flaire]'
-  - Mentor
-  - Friend
-  - Ride or Die
-  branchAStartIndex: 21
-  branchBStartIndex: 22
-  branchCStartIndex: 23
-  branchEndIndex: 24
+  character: 11
+  dialogues: []
+  branchAStartIndex: 0
+  branchBStartIndex: 0
+  branchCStartIndex: 0
+  branchEndIndex: 0
   tattooShapes: 
   forceBranchIndex: 0

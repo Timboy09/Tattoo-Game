@@ -34,6 +34,7 @@ public enum Character
     CHOICE,
     CLUE,
     GAME,
+    FLAIR,
     MAX
 }
 

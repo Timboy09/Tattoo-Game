@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private List<DialogueSO> chapter_zero;
 
-    private int currentDialogueIndex = -1;
+    [HideInInspector] public int currentDialogueIndex = -1;
     private int branchEndIndex = -1;
 
     private Queue<string> dialogues;
@@ -174,8 +174,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private bool forceCloseContinueBtn = false;
+
     public void StartDialogue(DialogueSO _dialogue)
     {
+        forceCloseContinueBtn = false;
         dialogues.Clear();
 
         optionsPanel.SetActive(false);
@@ -228,17 +231,21 @@ public class DialogueManager : MonoBehaviour
 
             case Character.CHOICE:
                 optionsPanel.SetActive(true);
-                continueBtn.gameObject.SetActive(false);
+                forceCloseContinueBtn = true;
                 HandleOptions();
                 break;
 
             case Character.CLUE:
-                continueBtn.gameObject.SetActive(false);
+                forceCloseContinueBtn = true;
                 ClueInteractions();
                 break;
 
             case Character.GAME:
                 gameManager.StartTattooGame();
+                break;
+
+            case Character.FLAIR:
+                gameManager.StartFlairGame();
                 break;
         }
 
@@ -411,11 +418,16 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string _senence)
     {
+        continueBtn.gameObject.SetActive(false);
         dialoguesText.text = "";
         foreach (char letter in _senence.ToCharArray())
         {
             dialoguesText.text += letter;
             yield return new WaitForSeconds(0.02f);    
+        }
+        if (!forceCloseContinueBtn)
+        {
+            continueBtn.gameObject.SetActive(true);
         }
     }
 }

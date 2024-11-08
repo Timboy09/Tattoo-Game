@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: C1_ 19
   m_EditorClassIdentifier: 
   character: 10
-  dialogues: []
+  dialogues:
+  - '[Add your own Falir['
+  - Mentor
+  - Friend
+  - Ride or Die
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0
   branchEndIndex: 0
   tattooShapes: 
+  forceBranchIndex: 0
