@@ -1,12 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using FreeDraw;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RecognitionManager : MonoBehaviour
 {
+    private GameManager gameManager;
+
     [SerializeField] private Drawable _drawable;
     [SerializeField] private TextMeshProUGUI _recognitionResult;
     [SerializeField] private Button _templateModeButton;
@@ -47,6 +51,8 @@ public class RecognitionManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.instance;
+
         _drawable.OnDrawFinished += OnDrawFinished;
         if (_templateModeButton != null) 
         {
@@ -140,14 +146,46 @@ public class RecognitionManager : MonoBehaviour
                 resultText = $"Recognized: {result.Item1}, Distance: {result.Item2}";
             }
 
-            //_recognitionResult.text = resultText;
+            //recognitionResult.text = resultText;
             Debug.Log(resultText);
+            CreateTattoo(result.Item1, result.Item2);
         }
     }
 
-    private void ShapeRecognised(string _resultText)
+    private void CreateTattoo(string _shapeData, float _accuracy)
     {
+        Shapes targetShape = Shapes.MIN;
+        bool shapeDetected = false;
 
+        if (gameManager.tattooShapes.Count >= 1)
+        {
+            targetShape = gameManager.tattooShapes.Find(x => x == (Shapes)Enum.Parse(typeof(Shapes), _shapeData));
+            if(_accuracy > 0.7f && _accuracy < 2f)
+            {
+                shapeDetected = true;
+                gameManager.tattooShapes.Remove(targetShape);
+            }
+            else
+            {
+                shapeDetected = false;
+            }
+        }
+
+        if (shapeDetected)
+        {
+            gameManager.DrawTattooShapes(targetShape);
+        }
+        else
+        {
+            //Issue Warning
+            Debug.Log(_shapeData.ToString() + " " + _accuracy);
+            gameManager.uiManager.TriggerTattooWarning();
+        }
+
+        if(gameManager.tattooShapes.Count == 0)
+        {
+            Debug.Log("Tattoo Complete");
+        }
     }
 
     private void OnApplicationQuit()

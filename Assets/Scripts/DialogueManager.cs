@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     [SerializeField]
     private List<DialogueSO> chapter_zero;
