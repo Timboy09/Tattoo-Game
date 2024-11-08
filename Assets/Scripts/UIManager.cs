@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -36,6 +37,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Dialogue")]
     public GameObject dialoguePanel;
+
+    [Header("Game")]
+    public GameObject gamePanel;
+
+    [SerializeField]
+    private GameObject tattooWarningPanel;
+
+    public TextMeshProUGUI tattooCompletionText;
 
     private void Start()
     {
@@ -86,5 +95,18 @@ public class UIManager : MonoBehaviour
         playBtn.GetComponent<Image>().alphaHitTestMinimumThreshold = 1f;
         quitBtn.GetComponent<Image>().alphaHitTestMinimumThreshold = 1f;
         creditsBtn.GetComponent<Image>().alphaHitTestMinimumThreshold = 1f;
+    }
+
+    public void TriggerTattooWarning()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TattooWarningCO());
+    }
+
+    private IEnumerator TattooWarningCO()
+    {
+        tattooWarningPanel.SetActive(true);
+        yield return new WaitForSeconds(1);
+        tattooWarningPanel.SetActive(false);
     }
 }

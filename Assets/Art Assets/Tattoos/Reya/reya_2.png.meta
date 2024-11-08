@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: c6744fe9367fe144dabea6c2b14e6e03
+guid: afe3dd8e5d746c84da523a35d09f1f25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8886389442827834879
-    second: ride or die_0
+      213: -653367460992705238
+    second: reya_2_0
   - first:
-      213: -7682392701865562174
-    second: ride or die_1
+      213: 3152416023908640935
+    second: reya_2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ride or die_0
+      name: reya_2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 12
-        width: 758
-        height: 268
+        x: 1003
+        y: 767
+        width: 15
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10a277442e33da480800000000000000
-      internalID: -8886389442827834879
+      spriteID: a2d1bb381c5cee6f0800000000000000
+      internalID: -653367460992705238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ride or die_1
+      name: reya_2_1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 0
-        width: 18
-        height: 14
+        x: 1005
+        y: 633
+        width: 326
+        height: 380
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2cfef3c6a88a26590800000000000000
-      internalID: -7682392701865562174
+      spriteID: 7a8e259eba1afbb20800000000000000
+      internalID: 3152416023908640935
       vertices: []
       indices: 
       edges: []
@@ -199,8 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ride or die_0: -8886389442827834879
-      ride or die_1: -7682392701865562174
+      reya_2_0: -653367460992705238
+      reya_2_1: 3152416023908640935
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

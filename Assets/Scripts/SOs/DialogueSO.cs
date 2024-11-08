@@ -39,7 +39,7 @@ public enum Character
 
 public enum Shapes
 {
-    MIX,
+    MIN,
     TRIANGLE,
     CIRCLE,
     QUAD,

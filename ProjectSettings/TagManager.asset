@@ -44,5 +44,8 @@ TagManager:
   - name: TattooArea
     uniqueID: 3845622067
     locked: 0
+  - name: Tattoo
+    uniqueID: 178034027
+    locked: 0
   m_RenderingLayers:
   - Default

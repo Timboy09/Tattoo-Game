@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7615ea11955fac24486b6575cf55a957
+guid: 8846a4eb536dad04dbf7938da8615ddc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4223817174029934829
-    second: reya_skin_0
+      213: 2312002460233331449
+    second: reya_bg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 123
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: reya_skin_0
+      name: reya_bg_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 776
-        height: 719
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de0af3e47530e9a30800000000000000
-      internalID: 4223817174029934829
+      spriteID: 9f27902fcf1e51020800000000000000
+      internalID: 2312002460233331449
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      reya_skin_0: 4223817174029934829
+      reya_bg_0: 2312002460233331449
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

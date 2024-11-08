@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2d06b2f85d1166e4fbf065e9c157a43e
+guid: bfcd185833eb66c4baaa7c4c08947a01
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7890246350005439881
-    second: Rectangle_0
+      213: 1374333169731377692
+    second: reya_tattooarea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rectangle_0
+      name: reya_tattooarea_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 434
-        height: 148
+        x: 493
+        y: 110
+        width: 957
+        height: 915
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 98d85624049cf7d60800000000000000
-      internalID: 7890246350005439881
+      spriteID: c1a10e08cbc921310800000000000000
+      internalID: 1374333169731377692
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rectangle_0: 7890246350005439881
+      reya_tattooarea_0: 1374333169731377692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 77c2395e18fdd8747aa640f6d4f66c65
+guid: 143c5973ea3b82748ac8c7c1f9b3982c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5154189640090123692
-    second: flag_0
-  - first:
-      213: -643588312621719292
-    second: flag_1
+      213: -5836230730662595494
+    second: reya_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flag_0
+      name: reya_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 231
-        height: 151
+        x: 862
+        y: 754
+        width: 290
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,30 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4520e6594d3a878b0800000000000000
-      internalID: -5154189640090123692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flag_1
-      rect:
-        serializedVersion: 2
-        x: 622
-        y: 1
-        width: 231
-        height: 151
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 401e69ce6d38117f0800000000000000
-      internalID: -643588312621719292
+      spriteID: a5433a7721b810fa0800000000000000
+      internalID: -5836230730662595494
       vertices: []
       indices: 
       edges: []
@@ -199,8 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      flag_0: -5154189640090123692
-      flag_1: -643588312621719292
+      reya_1_0: -5836230730662595494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

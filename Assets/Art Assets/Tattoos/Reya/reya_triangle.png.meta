@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a82c7cfbcce202d479390e4702c37667
+guid: 6b290bba4318685458e2a890522452d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6937817954938267909
-    second: 2_0
+      213: 618837416996460744
+    second: reya_triangle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2_0
+      name: reya_triangle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 487
-        height: 111
+        x: 946
+        y: 299
+        width: 118
+        height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5092c600ca4184060800000000000000
-      internalID: 6937817954938267909
+      spriteID: 8c85bcd1a5d869800800000000000000
+      internalID: 618837416996460744
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2_0: 6937817954938267909
+      reya_triangle_0: 618837416996460744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

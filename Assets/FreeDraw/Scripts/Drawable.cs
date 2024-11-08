@@ -192,14 +192,14 @@ namespace FreeDraw
             {
                 _strokeIndex++;
             }
-            
-            if (Input.GetKeyDown(KeyCode.Space))
+
+            if (Input.GetMouseButtonUp(0))
             {
                 OnDrawFinished?.Invoke(_drawPoints.ToArray());
                 previous_drag_position = Vector2.zero;
                 no_drawing_on_current_drag = false;
                 ResetCanvas(drawable_texture);
-                Debug.Log(_strokeIndex);
+                //Debug.Log(_strokeIndex);
                 _strokeIndex = 0;
             }
 
