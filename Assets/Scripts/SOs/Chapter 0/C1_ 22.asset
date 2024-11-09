@@ -16,27 +16,16 @@ MonoBehaviour:
   dialogues:
   - Oh..ho..
   - "..who knew that\u2019s how you saw me."
-  - 'Maybe I should start calling you, <color=#00FFFF>[*shona* ]</color>
+  - 'Maybe I should start calling you, <#f7df8f>*shona* </color>
 
 
 
-    <color=#00FFFF>[*shone*
-    - Bengali term for endearment.]</color>'
-  - 'Maybe I should start calling you, <color=#00FFFF>[*shona*]</color>
-
-
-
-    <color=#00FFFF>[*shone*
-    - Bengali term for endearment.]</color>'
+    <#f7df8f>*shona*
+    - Bengali term for endearment.</color>'
   - Let's see how you perform this week.
   - "Well, I should head back. I\u2019ll drop by soon. "
-  - 'All the very best ______. '
+  - All the best, kid.
   - "You\u2019re all grown up."
-  - "You\u2019re all grown up."
-  - '*Jingle Jingle.*
-
-
-    THE END'
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

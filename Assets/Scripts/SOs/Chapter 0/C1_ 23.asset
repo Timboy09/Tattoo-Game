@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
-  m_Name: C1_ 20
+  m_Name: C1_ 23
   m_EditorClassIdentifier: 
-  character: 3
+  character: 1
   dialogues:
-  - Amazing job, love. That was very smooth I gotta say.
-  - Once you finish the tattoo, you could add a personal touch.
-  - "Every artist leaves a little tribute to their client\u2019s vision."
+  - '[Door Closes]
+
+    *Jingle Jingle.*'
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

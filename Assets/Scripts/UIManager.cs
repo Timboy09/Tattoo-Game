@@ -104,6 +104,8 @@ public class UIManager : MonoBehaviour
 
         HandleFlairOptions();
     }
+    private bool selectedOption = false;
+    private const string confirmOption = "Confirm >>";
 
     private void HandleFlairOptions()
     {
@@ -111,16 +113,23 @@ public class UIManager : MonoBehaviour
         {
             gameManager.reyaSelectedFlair.gameObject.SetActive(true);
             string btntext = flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text;
-            if (btntext == "Confirm?")
+            if (btntext == confirmOption)
             {
                 //Clicked second time, free this option
-                Debug.Log("Continue Story here");
+                selectedOption = true;
+                StartCoroutine(gameManager.EndFlairgame());
             }
             else
             {
                 //Clicked Once, give players chace to see all Options
-                flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = "Confirm?";
+                flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = confirmOption;
                 gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[0];
+
+                if (!selectedOption)
+                {
+                    flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = gameManager.dialogueManager.btnText[1];
+                    flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = gameManager.dialogueManager.btnText[2];
+                }
             }
         });
 
@@ -128,16 +137,23 @@ public class UIManager : MonoBehaviour
         {
             gameManager.reyaSelectedFlair.gameObject.SetActive(true);
             string btntext = flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text;
-            if (btntext == "Confirm?")
+            if (btntext == confirmOption)
             {
                 //Clicked second time, free this option
-                Debug.Log("Continue Story here");
+                selectedOption = true;
+                StartCoroutine(gameManager.EndFlairgame());
             }
             else
             {
                 //Clicked Once, give players chace to see all Options
-                flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = "Confirm?";
+                flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = confirmOption;
                 gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[1];
+
+                if (!selectedOption)
+                {
+                    flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = gameManager.dialogueManager.btnText[0];
+                    flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = gameManager.dialogueManager.btnText[2];
+                }
             }
         });
 
@@ -145,16 +161,23 @@ public class UIManager : MonoBehaviour
         {
             gameManager.reyaSelectedFlair.gameObject.SetActive(true);
             string btntext = flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text;
-            if (btntext == "Confirm?")
+            if (btntext == confirmOption)
             {
                 //Clicked second time, free this option
-                Debug.Log("Continue Story here");
+                selectedOption = true;
+                StartCoroutine(gameManager.EndFlairgame());
             }
             else
             {
                 //Clicked Once, give players chace to see all Options
-                flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = "Confirm?";
+                flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = confirmOption;
                 gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[2];
+            }
+
+            if (!selectedOption)
+            {
+                flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = gameManager.dialogueManager.btnText[0];
+                flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = gameManager.dialogueManager.btnText[1];
             }
         });
     }

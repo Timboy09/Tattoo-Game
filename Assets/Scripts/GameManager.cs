@@ -137,6 +137,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator EndFlairgame()
+    {
+        uiManager.optionsPanel.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        uiManager.dialoguePanel.SetActive(true);        
+        uiManager.gamePanel.SetActive(false);
+
+        gameObj.SetActive(false);
+        dialogueManager.StartChapterZero();
+    }
+
     public void StartTattooGame()
     {
         drawAreaObj.GetComponent<Drawable>().enabled = true;
