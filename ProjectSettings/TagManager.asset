@@ -47,5 +47,8 @@ TagManager:
   - name: Tattoo
     uniqueID: 178034027
     locked: 0
+  - name: Flair
+    uniqueID: 1513022383
+    locked: 0
   m_RenderingLayers:
   - Default

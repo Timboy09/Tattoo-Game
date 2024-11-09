@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: C1_ 21
   m_EditorClassIdentifier: 
   character: 11
-  dialogues: []
+  dialogues:
+  - Mentor
+  - Friend
+  - Ride or Die
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

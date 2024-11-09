@@ -22,5 +22,5 @@ MonoBehaviour:
   branchBStartIndex: 16
   branchCStartIndex: 17
   branchEndIndex: 18
-  tattooShapes: 010000000200000003000000
+  tattooShapes: 
   forceBranchIndex: 1

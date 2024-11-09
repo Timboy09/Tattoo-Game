@@ -245,7 +245,11 @@ public class DialogueManager : MonoBehaviour
                 break;
 
             case Character.FLAIR:
-                gameManager.StartFlairGame();
+                string[] btnText = new string[3];
+                btnText[0] = _dialogue.dialogues[0];
+                btnText[1] = _dialogue.dialogues[1];
+                btnText[2] = _dialogue.dialogues[2];
+                gameManager.StartFlairGame(btnText);
                 break;
         }
 

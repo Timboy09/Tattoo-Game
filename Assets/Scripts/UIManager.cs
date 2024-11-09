@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
+    [HideInInspector] public GameManager gameManager;
+
     [Header("Main Menu")]
     [SerializeField]
     public GameObject mainMenuPanel;
@@ -48,10 +51,16 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionsPanel;
 
+    public List<Button> flairOptionBtns;
+
     public TextMeshProUGUI tattooCompletionText;
+
+    private bool optionSelectedOnce = false;
 
     private void Start()
     {
+        gameManager = GameManager.instance; 
+
         #region Quit Game 
 
         HandleAlphaThreshold();
@@ -92,6 +101,62 @@ public class UIManager : MonoBehaviour
         });
 
         #endregion
+
+        HandleFlairOptions();
+    }
+
+    private void HandleFlairOptions()
+    {
+        flairOptionBtns[0].onClick.AddListener(() =>
+        {
+            gameManager.reyaSelectedFlair.gameObject.SetActive(true);
+            string btntext = flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text;
+            if (btntext == "Confirm?")
+            {
+                //Clicked second time, free this option
+                Debug.Log("Continue Story here");
+            }
+            else
+            {
+                //Clicked Once, give players chace to see all Options
+                flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = "Confirm?";
+                gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[0];
+            }
+        });
+
+        flairOptionBtns[1].onClick.AddListener(() =>
+        {
+            gameManager.reyaSelectedFlair.gameObject.SetActive(true);
+            string btntext = flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text;
+            if (btntext == "Confirm?")
+            {
+                //Clicked second time, free this option
+                Debug.Log("Continue Story here");
+            }
+            else
+            {
+                //Clicked Once, give players chace to see all Options
+                flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = "Confirm?";
+                gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[1];
+            }
+        });
+
+        flairOptionBtns[2].onClick.AddListener(() =>
+        {
+            gameManager.reyaSelectedFlair.gameObject.SetActive(true);
+            string btntext = flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text;
+            if (btntext == "Confirm?")
+            {
+                //Clicked second time, free this option
+                Debug.Log("Continue Story here");
+            }
+            else
+            {
+                //Clicked Once, give players chace to see all Options
+                flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = "Confirm?";
+                gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[2];
+            }
+        });
     }
 
     private void HandleAlphaThreshold()

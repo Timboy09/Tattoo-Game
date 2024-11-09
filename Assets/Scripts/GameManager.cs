@@ -1,6 +1,9 @@
+using FreeDraw;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,12 +22,16 @@ public class GameManager : MonoBehaviour
     private GameObject gameObj;
 
     [SerializeField]
+    private GameObject drawAreaObj;
+
+    [SerializeField]
     private GameObject tattooPrefab;
 
     [Header("Reya Tattoo")]
     [SerializeField] private Sprite reyaTattooBg;
     [SerializeField] private List<Sprite> reyaTattooSprs;
-    [SerializeField] private List<Sprite> reyaOptionsSprs;
+    public List<Sprite> reyaOptionsSprs;
+    public SpriteRenderer reyaSelectedFlair;
 
     [Header("Qi Tattoo")]
     [SerializeField]
@@ -116,23 +123,34 @@ public class GameManager : MonoBehaviour
         }        
     }
 
-    public void StartFlairGame()
+    public void StartFlairGame(string[] _btnText)
     {
         uiManager.dialoguePanel.SetActive(false);
         uiManager.optionsPanel.SetActive(true);
-        gameObj.SetActive(true);
         uiManager.gamePanel.SetActive(true);
+
+        gameObj.SetActive(true);
+
+        for (int i = 0; i < uiManager.flairOptionBtns.Count; i++)
+        {
+            uiManager.flairOptionBtns[i].GetComponentInChildren<TextMeshProUGUI>().text = _btnText[i];
+        }
     }
 
     public void StartTattooGame()
     {
+        drawAreaObj.GetComponent<Drawable>().enabled = true;
+        drawAreaObj.GetComponent<RecognitionManager>().enabled = true;
+
         uiManager.dialoguePanel.SetActive(false);
         uiManager.tattooCompletionPanel.SetActive(true);
-        gameObj.SetActive(true);
         uiManager.gamePanel.SetActive(true);
+        uiManager.tattooCompletionText.text = tattooCompletionIndex + "/" + tattooCompletionTotal;
+
+        reyaSelectedFlair.gameObject.SetActive(false);
+        gameObj.SetActive(true);
         tattooCompletionTotal = tattooShapes.Count;
         tattooCompletionIndex = 0;
-        uiManager.tattooCompletionText.text = tattooCompletionIndex + "/" + tattooCompletionTotal;
 
         switch (currentChapter)
         {
@@ -160,12 +178,15 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator EndTattooGame()
     {
+        drawAreaObj.GetComponent<Drawable>().enabled = false;
+        drawAreaObj.GetComponent<RecognitionManager>().enabled = false;
+
         yield return new WaitForSeconds(1f);
-        dialogueManager.currentDialogueIndex--;
         uiManager.dialoguePanel.SetActive(true);
         uiManager.tattooCompletionPanel.SetActive(false);
-        gameObj.SetActive(false);
         uiManager.gamePanel.SetActive(false);
+
+        gameObj.SetActive(false);
         dialogueManager.StartChapterZero();
     }
 }
