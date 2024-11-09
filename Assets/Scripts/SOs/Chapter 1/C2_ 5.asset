@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 3
   dialogues:
-  - Well well.. Like what you see, huh?[
+  - Well well.. Like what you see, huh?
   - What are some other cravings you have?
   branchAStartIndex: 0
   branchBStartIndex: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   character: 8
   dialogues:
   - '[Qi is leaving without sharing her inspiration]'
-  - "Wait, let\u2019s hear it -> +1 Heart"
+  - "Wait, let\u2019s hear it."
   - Are you sure?
   - Fine, your choice.
   branchAStartIndex: 15

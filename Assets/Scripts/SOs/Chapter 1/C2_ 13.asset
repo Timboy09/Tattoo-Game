@@ -15,9 +15,9 @@ MonoBehaviour:
   character: 8
   dialogues:
   - '[Are you and Reya together?]'
-  - "Hoping for it->\n Lock Qi as a dateable character."
-  - "She\u2019s a close friend-> Unlock Qi as a dateable character."
-  - "She\u2019s my mentor-> \nUnlock Qi as a dateable character."
+  - Hoping for it.
+  - "She\u2019s a close friend."
+  - "She\u2019s my mentor."
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

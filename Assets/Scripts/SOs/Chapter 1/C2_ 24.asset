@@ -15,9 +15,9 @@ MonoBehaviour:
   character: 8
   dialogues:
   - '[Qi wants to come back in the evening]'
-  - Calm-> +1 Heart
-  - Direct-> Dialogue Change
-  - Sarcastic->
+  - Calm
+  - Direct
+  - Sarcastic
   branchAStartIndex: 24
   branchBStartIndex: 26
   branchCStartIndex: 27

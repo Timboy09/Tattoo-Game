@@ -15,16 +15,9 @@ MonoBehaviour:
   character: 8
   dialogues:
   - '[Stranger interrupting Qi''s session]'
-  - 'I am with a customer->
-
-    Unlock Nayr as a dateble character'
-  - 'Are you drunk?->
-
-    Unlock Nayr as a dateble character'
-  - 'Did you leave your manners at the bar with the alcohol?->
-
-    Lock Nayr as
-    a dateble character'
+  - I am with a customer.
+  - Are you drunk?
+  - Did you leave your manners at the bar with the alcohol?
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0
