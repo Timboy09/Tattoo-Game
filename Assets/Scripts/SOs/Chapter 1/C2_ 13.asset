@@ -18,9 +18,9 @@ MonoBehaviour:
   - Hoping for it.
   - "She\u2019s a close friend."
   - "She\u2019s my mentor."
-  branchAStartIndex: 0
-  branchBStartIndex: 0
-  branchCStartIndex: 0
+  branchAStartIndex: 13
+  branchBStartIndex: 13
+  branchCStartIndex: 13
   branchEndIndex: 13
   tattooShapes: 
   forceBranchIndex: 0

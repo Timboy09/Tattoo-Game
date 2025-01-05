@@ -18,9 +18,9 @@ MonoBehaviour:
   - "Wait, let\u2019s hear it."
   - Are you sure?
   - Fine, your choice.
-  branchAStartIndex: 15
-  branchBStartIndex: 16
-  branchCStartIndex: 16
+  branchAStartIndex: 16
+  branchBStartIndex: 15
+  branchCStartIndex: 15
   branchEndIndex: 16
   tattooShapes: 
-  forceBranchIndex: 0
+  forceBranchIndex: 1

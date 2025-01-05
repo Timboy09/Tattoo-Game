@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4977af61389fcf3489319721141dbaa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentChapter: 0
+  currentChapter: 1
   uiManager: {fileID: 724171768}
   dialogueManager: {fileID: 779984663}
   tattooShapes: 
@@ -3454,6 +3454,56 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3c6814843dbdc0428be5bb2dff5b245, type: 2}
   - {fileID: 11400000, guid: b05e9a7ae87c80e4db926b60e1c77d57, type: 2}
   - {fileID: 11400000, guid: 055199aec01cfc24e92473bed83f7d70, type: 2}
+  chapter_one:
+  - {fileID: 11400000, guid: 332647b5564c75041a64f2404077ba1b, type: 2}
+  - {fileID: 11400000, guid: 6337daa397ca65545863c02ba2c1da12, type: 2}
+  - {fileID: 11400000, guid: a2521da1ac059c748a4fe0e86ba1cb8e, type: 2}
+  - {fileID: 11400000, guid: cfec31e5b85ebe2488f92c678922eeb6, type: 2}
+  - {fileID: 11400000, guid: ddbd7debf91f70043a42311eb42f7ba6, type: 2}
+  - {fileID: 11400000, guid: fd07be3f80984154896d1c2da400c462, type: 2}
+  - {fileID: 11400000, guid: 66fdf7470247de04b87d38bddd48b4c9, type: 2}
+  - {fileID: 11400000, guid: 344a3e0099387b549820ec1b788d9a42, type: 2}
+  - {fileID: 11400000, guid: 910c7a5c0346e5a44b382d41226f9090, type: 2}
+  - {fileID: 11400000, guid: b520104a3d57a7c4b89589d5bc7004a0, type: 2}
+  - {fileID: 11400000, guid: bc8b2b20abd8cb0488d6610977faad6a, type: 2}
+  - {fileID: 11400000, guid: 3703b8b7f872b9746a28a8bf8a0210f1, type: 2}
+  - {fileID: 11400000, guid: 593dabc70ee2dad4e9086a13d0cfc50f, type: 2}
+  - {fileID: 11400000, guid: bb2e9f73e9e421342bed52cc7c557e51, type: 2}
+  - {fileID: 11400000, guid: a2be56fe0cea19a48ad47a6a56e2a94d, type: 2}
+  - {fileID: 11400000, guid: 3f2ee3b7b290bc64a8f60f2616cc1316, type: 2}
+  - {fileID: 11400000, guid: dca9d10c11bbc43499c4141ef8d9e692, type: 2}
+  - {fileID: 11400000, guid: 2ba971ed96bc5a1429cb4dfa960a75ca, type: 2}
+  - {fileID: 11400000, guid: 86eb0a99b6984b3439de47f3cb40e0d0, type: 2}
+  - {fileID: 11400000, guid: 4b10eab20f6be7146b2d64f8ca5ef748, type: 2}
+  - {fileID: 11400000, guid: a1f56fc807c09784abadbb8b40b50b9e, type: 2}
+  - {fileID: 11400000, guid: e5179fe09d8456d42a58764c63f22206, type: 2}
+  - {fileID: 11400000, guid: b225ab8b0f5554948b1f296e1e507520, type: 2}
+  - {fileID: 11400000, guid: a4bf409d2c34aac45a07253a1ca5b3ec, type: 2}
+  - {fileID: 11400000, guid: c771e2184dfd8254888d0db97f83704d, type: 2}
+  - {fileID: 11400000, guid: 4706f5016b20c9b4a9699856783c21e4, type: 2}
+  - {fileID: 11400000, guid: 933077a03f1b79843bbb5fbcd09ab125, type: 2}
+  - {fileID: 11400000, guid: b173317e6ca97824b9a72ca9206956b0, type: 2}
+  - {fileID: 11400000, guid: 9ab2fe2867f69c74e9e7886989fc8681, type: 2}
+  - {fileID: 11400000, guid: 36e0c46ada7dd5a4e96156607e0b33c3, type: 2}
+  - {fileID: 11400000, guid: a01ce2685c70765479576d4f0d709570, type: 2}
+  - {fileID: 11400000, guid: 761e84d344286ee479fbf655d6997466, type: 2}
+  - {fileID: 11400000, guid: af55fb45713cfd048a741c40de0268ec, type: 2}
+  - {fileID: 11400000, guid: fed226f03a6870043844d2aba66fa3b9, type: 2}
+  - {fileID: 11400000, guid: 22d5fc8ca1ab3c444a5b6fa1040ef92a, type: 2}
+  - {fileID: 11400000, guid: e7f6a1cb271f4ba469443c4e00e7465f, type: 2}
+  - {fileID: 11400000, guid: 877d5da9ea00fd6439d88e1e60e0bd6c, type: 2}
+  - {fileID: 11400000, guid: a127bd7675bbdbd4186145ecac8bb5f4, type: 2}
+  - {fileID: 11400000, guid: 6bb7071b2c20a4347a8387a38bf6ea67, type: 2}
+  - {fileID: 11400000, guid: bd6299efa2b21da48a95d0ae65d929e3, type: 2}
+  - {fileID: 11400000, guid: 2a3f31a89b893d04da9bffe56ebf4a4a, type: 2}
+  - {fileID: 11400000, guid: 2320b8bb75cf5df478fdebb990327b20, type: 2}
+  - {fileID: 11400000, guid: 3a6504ced6c3af54c8feb5343ae09b75, type: 2}
+  - {fileID: 11400000, guid: 6c48b25a33c193e44995ed257972f4db, type: 2}
+  - {fileID: 11400000, guid: 6911d179841287d4ba96e2aa7d3aee02, type: 2}
+  - {fileID: 11400000, guid: ae620c6e4ff31c44bbfed036b9a47402, type: 2}
+  - {fileID: 11400000, guid: e958868f451a6a04a917918973a0fc3c, type: 2}
+  - {fileID: 11400000, guid: 1a8423ce423225a48bfa9109edd7b2ef, type: 2}
+  - {fileID: 11400000, guid: 7f75bb40b5a51c84c894ee011ed1a901, type: 2}
   currentDialogueIndex: -1
   charNameBox: {fileID: 1915549330}
   charNameText: {fileID: 682764893}

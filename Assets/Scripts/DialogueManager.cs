@@ -11,6 +11,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private List<DialogueSO> chapter_zero;
 
+    [SerializeField]
+    private List<DialogueSO> chapter_one;
+
     [HideInInspector] public int currentDialogueIndex = -1;
     private int branchEndIndex = -1;
 
@@ -102,53 +105,96 @@ public class DialogueManager : MonoBehaviour
             DisplayNextSentence();
         });
 
+        #region CHOICES BUTTONS
         optionABtn.onClick.AddListener(() =>
         {
-            if (!chapter_zero[currentDialogueIndex].forceBranchIndex)
+            List<DialogueSO> chapter = null;
+
+            switch (gameManager.currentChapter)
             {
-                branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+                case 0:
+                    chapter = chapter_zero;                 
+                    break;
+
+                case 1:
+                    chapter = chapter_one;
+                    break;
+            }
+
+            if (!chapter[currentDialogueIndex].forceBranchIndex)
+            {
+                branchEndIndex = chapter[currentDialogueIndex].branchEndIndex;
             }
             else
             {
-                branchEndIndex = chapter_zero[currentDialogueIndex + optionAIndex].branchEndIndex;
+                branchEndIndex = chapter[currentDialogueIndex + optionAIndex].branchEndIndex;
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
-            currentDialogueIndex = chapter_zero[currentDialogueIndex].branchAStartIndex;
-            StartDialogue(chapter_zero[currentDialogueIndex]);
+            currentDialogueIndex = chapter[currentDialogueIndex].branchAStartIndex;
+            StartDialogue(chapter[currentDialogueIndex]);
             isBranch = true;
+
         });
 
         optionBBtn.onClick.AddListener(() =>
         {
-            if (!chapter_zero[currentDialogueIndex].forceBranchIndex)
+            List<DialogueSO> chapter = null;
+
+            switch (gameManager.currentChapter)
             {
-                branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+                case 0:
+                    chapter = chapter_zero;
+                    isBranch = true;
+                    break;
+
+                case 1:
+                    chapter = chapter_one;
+                    break;
+            }
+
+            if (!chapter[currentDialogueIndex].forceBranchIndex)
+            {
+                branchEndIndex = chapter[currentDialogueIndex].branchEndIndex;
             }
             else
             {
-                branchEndIndex = chapter_zero[currentDialogueIndex + optionBIndex].branchEndIndex;
+                branchEndIndex = chapter[currentDialogueIndex + optionBIndex].branchEndIndex;
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
-            currentDialogueIndex = chapter_zero[currentDialogueIndex].branchBStartIndex;
-            StartDialogue(chapter_zero[currentDialogueIndex]);
-            isBranch = true;
+            currentDialogueIndex = chapter[currentDialogueIndex].branchBStartIndex;
+            StartDialogue(chapter[currentDialogueIndex]);
         });
 
         optionCBtn.onClick.AddListener(() =>
         {
-            if (!chapter_zero[currentDialogueIndex].forceBranchIndex)
+            List<DialogueSO> chapter = null;
+
+            switch (gameManager.currentChapter)
             {
-                branchEndIndex = chapter_zero[currentDialogueIndex].branchEndIndex;
+                case 0:
+                    chapter = chapter_zero;
+                    break;
+
+                case 1:
+                    chapter = chapter_one;
+                    break;
+            }
+
+            if (!chapter[currentDialogueIndex].forceBranchIndex)
+            {
+                branchEndIndex = chapter[currentDialogueIndex].branchEndIndex;
             }
             else
             {
-                branchEndIndex = chapter_zero[currentDialogueIndex + optionCIndex].branchEndIndex;
+                branchEndIndex = chapter[currentDialogueIndex + optionCIndex].branchEndIndex;
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
-            currentDialogueIndex = chapter_zero[currentDialogueIndex].branchCStartIndex;
-            StartDialogue(chapter_zero[currentDialogueIndex]);
+            currentDialogueIndex = chapter[currentDialogueIndex].branchCStartIndex;
+            StartDialogue(chapter[currentDialogueIndex]);
             isBranch = true;
         });
+
+        #endregion
 
         switch (gameManager.currentChapter)
         {
@@ -173,6 +219,40 @@ public class DialogueManager : MonoBehaviour
                 branchEndIndex = -1;
             }
             StartDialogue(chapter_zero[currentDialogueIndex]);
+        }
+        else
+        {
+            if(currentDialogueIndex != chapter_zero.Count)
+            {
+                //TO DO: REMOVE HARD CODED 2ND CHAPTER. DONE 1 NIGHT BEFORE JURY
+                print("Load Chapter One");
+                currentDialogueIndex = -1;
+                gameManager.currentChapter = 1;
+                StartChapterOne();
+            }
+        }
+    }
+
+    public void StartChapterOne()
+    {
+        if (chapter_one.Count != 0 && currentDialogueIndex != chapter_one.Count - 1)
+        {            
+            if (!isBranch)
+            {
+                currentDialogueIndex++;
+                if (currentDialogueIndex != -1 && chapter_one[currentDialogueIndex].forceBranchIndex && chapter_one[currentDialogueIndex].character != Character.CHOICE)
+                {
+                    currentDialogueIndex = chapter_one[currentDialogueIndex - 1].branchEndIndex;
+                }
+            }
+            else
+            {
+                currentDialogueIndex = branchEndIndex;
+                isBranch = false;
+                branchEndIndex = -1;
+            }
+            
+            StartDialogue(chapter_one[currentDialogueIndex]);
         }
     }
 
@@ -390,16 +470,28 @@ public class DialogueManager : MonoBehaviour
 
     public void HandleOptions()
     {
-        optionABtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionAIndex];
-        optionBBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionBIndex];
-        if(chapter_zero[currentDialogueIndex].branchCStartIndex == 0)
+        List<DialogueSO> chapter = null;
+
+        switch (gameManager.currentChapter)
+        {
+            case 0:
+                chapter = chapter_zero;
+                break;
+
+            case 1:
+                chapter = chapter_one;
+                break;
+        }
+        optionABtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter[currentDialogueIndex].dialogues[optionAIndex];
+        optionBBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter[currentDialogueIndex].dialogues[optionBIndex];
+        if (chapter[currentDialogueIndex].branchCStartIndex == 0)
         {
             optionCBtn.gameObject.SetActive(false);
         }
         else
         {
             optionCBtn.gameObject.SetActive(true);
-            optionCBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter_zero[currentDialogueIndex].dialogues[optionCIndex];
+            optionCBtn.GetComponentInChildren<TextMeshProUGUI>().text = chapter[currentDialogueIndex].dialogues[optionCIndex];
         }
     }
 
@@ -418,12 +510,22 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         shapeBubble.SetActive(false);
-        StartChapterZero();
+
+        switch (gameManager.currentChapter)
+        {
+            case 0:
+                StartChapterZero();
+                break;
+
+            case 1:
+                StartChapterOne();
+                break;
+        }
     }
 
     private IEnumerator TypeSentence(string _senence)
     {
-        continueBtn.gameObject.SetActive(false);
+        //continueBtn.gameObject.SetActive(false);
         dialoguesText.text = "";
         foreach (char letter in _senence.ToCharArray())
         {
