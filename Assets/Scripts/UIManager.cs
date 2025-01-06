@@ -123,7 +123,16 @@ public class UIManager : MonoBehaviour
             {
                 //Clicked Once, give players chace to see all Options
                 flairOptionBtns[0].GetComponentInChildren<TextMeshProUGUI>().text = confirmOption;
-                gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[0];
+                switch (gameManager.currentChapter)
+                {
+                    case 0:
+                        gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[0];
+                        break;
+
+                    case 1:
+                        gameManager.reyaSelectedFlair.sprite = gameManager.qiOptionsSprs[0];
+                        break;
+                }
 
                 if (!selectedOption)
                 {
@@ -147,7 +156,16 @@ public class UIManager : MonoBehaviour
             {
                 //Clicked Once, give players chace to see all Options
                 flairOptionBtns[1].GetComponentInChildren<TextMeshProUGUI>().text = confirmOption;
-                gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[1];
+                switch (gameManager.currentChapter)
+                {
+                    case 0:
+                        gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[1];
+                        break;
+
+                    case 1:
+                        gameManager.reyaSelectedFlair.sprite = gameManager.qiOptionsSprs[1];
+                        break;
+                }
 
                 if (!selectedOption)
                 {
@@ -171,7 +189,16 @@ public class UIManager : MonoBehaviour
             {
                 //Clicked Once, give players chace to see all Options
                 flairOptionBtns[2].GetComponentInChildren<TextMeshProUGUI>().text = confirmOption;
-                gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[2];
+                switch (gameManager.currentChapter)
+                {
+                    case 0:
+                        gameManager.reyaSelectedFlair.sprite = gameManager.reyaOptionsSprs[2];
+                        break;
+
+                    case 1:
+                        gameManager.reyaSelectedFlair.sprite = gameManager.qiOptionsSprs[2];
+                        break;
+                }
             }
 
             if (!selectedOption)

@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: C2_ 46
   m_EditorClassIdentifier: 
   character: 10
-  dialogues:
-  - An Alien walking among mortals.
-  - "\u2026*blushes profusely*..."
-  - "You\u2019re good at this."
-  - "Still feels like something is missing\u2026"
+  dialogues: []
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

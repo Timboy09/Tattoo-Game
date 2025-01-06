@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
   m_Name: C2_ 48
   m_EditorClassIdentifier: 
-  character: 8
+  character: 11
   dialogues:
-  - '[Add your own Flair]'
   - Flaunt
   - Acceptance
   - Guarded

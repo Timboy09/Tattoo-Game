@@ -131,7 +131,6 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
             currentDialogueIndex = chapter[currentDialogueIndex].branchAStartIndex;
-            print(currentDialogueIndex);
             StartDialogue(chapter[currentDialogueIndex]);
             isBranch = true;
 
@@ -163,7 +162,6 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
             currentDialogueIndex = chapter[currentDialogueIndex].branchBStartIndex;
-            print(currentDialogueIndex);
             StartDialogue(chapter[currentDialogueIndex]);
         });
 
@@ -192,7 +190,6 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
             currentDialogueIndex = chapter[currentDialogueIndex].branchCStartIndex;
-            print(currentDialogueIndex);
             StartDialogue(chapter[currentDialogueIndex]);
             isBranch = true;
         });
@@ -261,7 +258,6 @@ public class DialogueManager : MonoBehaviour
                 isBranch = false;
                 branchEndIndex = -1;
             }
-            print(currentDialogueIndex);
             StartDialogue(chapter_one[currentDialogueIndex]);
         }
     }
@@ -372,7 +368,7 @@ public class DialogueManager : MonoBehaviour
     #region Clue Interactions
 
     private string[] triangleClues = { "APEX" };
-    private string[] circleClues = { "ORBIT", "CYCLE", "LOOPING", "SPIRALLING", "GLOBE" };
+    private string[] circleClues = { "ORBIT", "CYCLE", "LOOPING", "GLOBE" };
     private string[] quadClues = { "FRAME" };
 
     private List<Shapes> tattooShapes;
@@ -558,7 +554,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string _senence)
     {
-        //continueBtn.gameObject.SetActive(false);
+        continueBtn.gameObject.SetActive(false);
         dialoguesText.text = "";
         foreach (char letter in _senence.ToCharArray())
         {

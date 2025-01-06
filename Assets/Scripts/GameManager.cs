@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [Header("Reya Tattoo")]
     [SerializeField] private Sprite reyaTattooBg;
     [SerializeField] private Sprite reyaTattooArea;
+    [SerializeField] private Texture2D reyaTattooAreaTex;
     [SerializeField] private List<Sprite> reyaTattooSprs;
     public List<Sprite> reyaOptionsSprs;
     public SpriteRenderer reyaSelectedFlair;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Sprite qiTattooBg;
     [SerializeField] private Sprite qiTattooArea;
+    [SerializeField] private Texture2D qiTattooAreaTex;
     [SerializeField] private List<Sprite> qiTattooSprs;
     public List<Sprite> qiOptionsSprs;
     public SpriteRenderer qiSelectedFlair;
@@ -70,27 +72,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    List<GameObject> tempTattoo = new List<GameObject>();
+
     public void DrawTattooShapes(Shapes _shape)
     {
         tattooCompletionIndex++;
         uiManager.tattooCompletionText.text = tattooCompletionIndex + "/" + tattooCompletionTotal;
 
         //TODO: Hard Coding this part, later think of a better solution
+        GameObject tattoo = null;
         switch (_shape)
         {
             case Shapes.TRIANGLE:
                 switch (currentChapter)
                 {
                     case chapterZero:
-                        GameObject tattoo = Instantiate(tattooPrefab, gameObj.transform);
+                        tattoo = Instantiate(tattooPrefab, gameObj.transform);
                         tattoo.GetComponent<SpriteRenderer>().sprite = reyaTattooSprs[0];
                         tattoo.GetComponent<SpriteRenderer>().sortingLayerName = "Tattoo";
                         tattoo.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                        tempTattoo.Add(tattoo);
                     break;
 
                     case chapterOne:
-
-                    break;
+                        
+                        break;
                 }
                 break;
 
@@ -98,14 +104,20 @@ public class GameManager : MonoBehaviour
                 switch (currentChapter)
                 {
                     case chapterZero:
-                        GameObject tattoo = Instantiate(tattooPrefab, gameObj.transform);
+                        tattoo = Instantiate(tattooPrefab, gameObj.transform);
                         tattoo.GetComponent<SpriteRenderer>().sprite = reyaTattooSprs[1];
                         tattoo.GetComponent<SpriteRenderer>().sortingLayerName = "Tattoo";
                         tattoo.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                        tempTattoo.Add(tattoo);
                         break;
 
                     case chapterOne:
-
+                        tattoo = Instantiate(tattooPrefab, gameObj.transform);
+                        tattoo.GetComponent<SpriteRenderer>().sprite = qiTattooSprs[0];
+                        qiTattooSprs.RemoveAt(0);
+                        tattoo.GetComponent<SpriteRenderer>().sortingLayerName = "Tattoo";
+                        tattoo.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                        tempTattoo.Add(tattoo);
                         break;
                 }
                 break;
@@ -114,10 +126,11 @@ public class GameManager : MonoBehaviour
                 switch (currentChapter)
                 {
                     case chapterZero:
-                        GameObject tattoo = Instantiate(tattooPrefab, gameObj.transform);
+                        tattoo = Instantiate(tattooPrefab, gameObj.transform);
                         tattoo.GetComponent<SpriteRenderer>().sprite = reyaTattooSprs[2];
                         tattoo.GetComponent<SpriteRenderer>().sortingLayerName = "Tattoo";
                         tattoo.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                        tempTattoo.Add(tattoo);
                         break;
 
                     case chapterOne:
@@ -150,7 +163,22 @@ public class GameManager : MonoBehaviour
         uiManager.gamePanel.SetActive(false);
 
         gameObj.SetActive(false);
-        dialogueManager.StartChapterZero();
+
+        for (int i = 0; i < tempTattoo.Count; i++)
+        {
+            Destroy(tempTattoo[i]);
+        }
+        tempTattoo = new List<GameObject>();
+        switch (currentChapter)
+        {
+            case 0:
+                dialogueManager.StartChapterZero();
+                break;
+
+            case 1:
+                dialogueManager.StartChapterOne();
+                break;
+        }
     }
 
     public void StartTattooGame()
@@ -158,14 +186,29 @@ public class GameManager : MonoBehaviour
         drawAreaObj.GetComponent<Drawable>().enabled = true;
         drawAreaObj.GetComponent<RecognitionManager>().enabled = true;
 
+        switch (currentChapter)
+        {
+            case 0:
+                drawAreaObj.GetComponent<SpriteRenderer>().sprite = reyaTattooArea;
+                drawAreaObj.GetComponent<Drawable>().drawable_sprite = reyaTattooArea;
+                drawAreaObj.GetComponent<Drawable>().drawable_texture = reyaTattooAreaTex;
+                break;
+
+            case 1:
+                drawAreaObj.GetComponent<SpriteRenderer>().sprite = qiTattooArea;
+                drawAreaObj.GetComponent<Drawable>().drawable_sprite = qiTattooArea;
+                drawAreaObj.GetComponent<Drawable>().drawable_texture = qiTattooAreaTex;
+                break;
+        }
+
         uiManager.dialoguePanel.SetActive(false);
         uiManager.tattooCompletionPanel.SetActive(true);
         uiManager.gamePanel.SetActive(true);
+        tattooCompletionTotal = tattooShapes.Count;
         uiManager.tattooCompletionText.text = tattooCompletionIndex + "/" + tattooCompletionTotal;
 
         reyaSelectedFlair.gameObject.SetActive(false);
         gameObj.SetActive(true);
-        tattooCompletionTotal = tattooShapes.Count;
         tattooCompletionIndex = 0;
 
         switch (currentChapter)
@@ -193,7 +236,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator EndTattooGame()
-    {
+    {        
         drawAreaObj.GetComponent<Drawable>().enabled = false;
         drawAreaObj.GetComponent<RecognitionManager>().enabled = false;
 
@@ -202,7 +245,18 @@ public class GameManager : MonoBehaviour
         uiManager.tattooCompletionPanel.SetActive(false);
         uiManager.gamePanel.SetActive(false);
 
-        gameObj.SetActive(false);
-        dialogueManager.StartChapterZero();
+        gameObj.SetActive(false);        
+
+        switch (currentChapter)
+        {
+            case 0:
+                dialogueManager.StartChapterZero();
+                break;
+
+            case 1:
+                dialogueManager.currentDialogueIndex--;
+                dialogueManager.StartChapterOne();
+                break;
+        }
     }
 }

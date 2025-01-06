@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 9
   dialogues:
-  - Caught in an endless <#6c9a9a>CYCLE</color>, my thoughts <#6c9a9a>LOOPING</color>
-    and <#6c9a9a>SPIRALLING</color>, detached - the only extraterrestrial on this
-    <#6c9a9a>GLOBE</color>.
+  - Caught in an endless <#6c9a9a>CYCLE</color>, my thoughts <#6c9a9a>LOOPING</color>,
+    detached - the only extraterrestrial on this <#6c9a9a>GLOBE</color>.
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0
   branchEndIndex: 0
-  tattooShapes: 02000000020000000200000002000000
+  tattooShapes: 020000000200000002000000
   forceBranchIndex: 0
