@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
   m_Name: C2_ 47
   m_EditorClassIdentifier: 
-  character: 8
+  character: 4
   dialogues:
-  - '[Add your own Flair]'
-  - Flaunt
-  - Acceptance
-  - Guarded
+  - An Alien walking among mortals.
+  - "\u2026*blushes profusely*..."
+  - "You\u2019re good at this."
+  - "Still feels like something is missing\u2026"
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

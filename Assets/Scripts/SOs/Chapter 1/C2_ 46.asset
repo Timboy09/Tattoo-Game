@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38beb86b7a5fd4c41867183167400090, type: 3}
   m_Name: C2_ 46
   m_EditorClassIdentifier: 
-  character: 4
+  character: 10
   dialogues:
   - An Alien walking among mortals.
   - "\u2026*blushes profusely*..."

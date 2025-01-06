@@ -18,9 +18,9 @@ MonoBehaviour:
   - I am with a customer.
   - Are you drunk?
   - Did you leave your manners at the bar with the alcohol?
-  branchAStartIndex: 0
-  branchBStartIndex: 0
-  branchCStartIndex: 0
+  branchAStartIndex: 19
+  branchBStartIndex: 19
+  branchCStartIndex: 19
   branchEndIndex: 19
   tattooShapes: 
   forceBranchIndex: 0

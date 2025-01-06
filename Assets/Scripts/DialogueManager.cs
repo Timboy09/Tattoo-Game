@@ -131,6 +131,7 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
             currentDialogueIndex = chapter[currentDialogueIndex].branchAStartIndex;
+            print(currentDialogueIndex);
             StartDialogue(chapter[currentDialogueIndex]);
             isBranch = true;
 
@@ -162,6 +163,7 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
             currentDialogueIndex = chapter[currentDialogueIndex].branchBStartIndex;
+            print(currentDialogueIndex);
             StartDialogue(chapter[currentDialogueIndex]);
         });
 
@@ -190,6 +192,7 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("Forced Branch to: " + branchEndIndex);
             }
             currentDialogueIndex = chapter[currentDialogueIndex].branchCStartIndex;
+            print(currentDialogueIndex);
             StartDialogue(chapter[currentDialogueIndex]);
             isBranch = true;
         });
@@ -247,11 +250,18 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                currentDialogueIndex = branchEndIndex;
+                if(currentDialogueIndex == branchEndIndex)
+                {
+                    currentDialogueIndex++;
+                }
+                else
+                {
+                    currentDialogueIndex = branchEndIndex;
+                }
                 isBranch = false;
                 branchEndIndex = -1;
             }
-            
+            print(currentDialogueIndex);
             StartDialogue(chapter_one[currentDialogueIndex]);
         }
     }
@@ -362,7 +372,7 @@ public class DialogueManager : MonoBehaviour
     #region Clue Interactions
 
     private string[] triangleClues = { "APEX" };
-    private string[] circleClues = { "ORBIT" };
+    private string[] circleClues = { "ORBIT", "CYCLE", "LOOPING", "SPIRALLING", "GLOBE" };
     private string[] quadClues = { "FRAME" };
 
     private List<Shapes> tattooShapes;
@@ -395,12 +405,32 @@ public class DialogueManager : MonoBehaviour
         hintPanel.SetActive(true);
         startClueDetection = true;
         tattooShapes = new List<Shapes>();
-        gameManager.tattooShapes = new List<Shapes>();
-        for (int i = 0; i < chapter_zero[currentDialogueIndex].tattooShapes.Count; i++)
+        gameManager.tattooShapes = new List<Shapes>();        
+
+        List<DialogueSO> chapter = null;
+
+        switch (gameManager.currentChapter)
         {
-            tattooShapes.Add(chapter_zero[currentDialogueIndex].tattooShapes[i]);
-            gameManager.tattooShapes.Add(chapter_zero[currentDialogueIndex].tattooShapes[i]);
+            case 0:
+                chapter = chapter_zero;
+                break;
+
+            case 1:
+                chapter = chapter_one;
+                break;
         }
+
+        for (int i = 0; i < chapter[currentDialogueIndex].tattooShapes.Count; i++)
+        {
+            tattooShapes.Add(chapter[currentDialogueIndex].tattooShapes[i]);
+            gameManager.tattooShapes.Add(chapter[currentDialogueIndex].tattooShapes[i]);
+        }
+    }
+
+    private IEnumerator HideShapeBubble()
+    {
+        yield return new WaitForSeconds(0.5f);
+        shapeBubble.SetActive(false);
     }
 
     private void Update()
@@ -430,6 +460,7 @@ public class DialogueManager : MonoBehaviour
                             tattooShapes.RemoveAt(targetIndex);
                             shapeBubble.SetActive(true);
                             clickedShape.sprite = triangleSpr;
+                            StartCoroutine(HideShapeBubble());
                         }
                         
                     }
@@ -445,7 +476,8 @@ public class DialogueManager : MonoBehaviour
                             tattooShapes.RemoveAt(targetIndex);
                             shapeBubble.SetActive(true);
                             clickedShape.sprite = circleSpr;
-                        }                        
+                            StartCoroutine(HideShapeBubble());
+                        }
                     }
                 }
 
@@ -459,7 +491,8 @@ public class DialogueManager : MonoBehaviour
                             tattooShapes.RemoveAt(targetIndex);
                             shapeBubble.SetActive(true);
                             clickedShape.sprite = quadSpr;
-                        }                        
+                            StartCoroutine(HideShapeBubble());
+                        }
                     }
                 }
             }

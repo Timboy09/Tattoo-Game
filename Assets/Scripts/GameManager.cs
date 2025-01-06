@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Reya Tattoo")]
     [SerializeField] private Sprite reyaTattooBg;
+    [SerializeField] private Sprite reyaTattooArea;
     [SerializeField] private List<Sprite> reyaTattooSprs;
     public List<Sprite> reyaOptionsSprs;
     public SpriteRenderer reyaSelectedFlair;
@@ -36,6 +37,10 @@ public class GameManager : MonoBehaviour
     [Header("Qi Tattoo")]
     [SerializeField]
     private Sprite qiTattooBg;
+    [SerializeField] private Sprite qiTattooArea;
+    [SerializeField] private List<Sprite> qiTattooSprs;
+    public List<Sprite> qiOptionsSprs;
+    public SpriteRenderer qiSelectedFlair;
 
     [Header("Nayr Tattoo")]
     [SerializeField]

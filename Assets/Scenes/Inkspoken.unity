@@ -498,10 +498,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1321173318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 40}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250.00002, y: -20}
+  m_SizeDelta: {x: 500.00003, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64380778
 MonoBehaviour:
@@ -566,13 +566,13 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2641,7 +2641,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2725,6 +2725,7 @@ MonoBehaviour:
   drawAreaObj: {fileID: 1187833136}
   tattooPrefab: {fileID: 1099791888849637623, guid: 9aec1395a2ba16345a330f0c3188a3ce, type: 3}
   reyaTattooBg: {fileID: 21300000, guid: 8846a4eb536dad04dbf7938da8615ddc, type: 3}
+  reyaTattooArea: {fileID: 21300000, guid: bfcd185833eb66c4baaa7c4c08947a01, type: 3}
   reyaTattooSprs:
   - {fileID: 21300000, guid: 6b290bba4318685458e2a890522452d4, type: 3}
   - {fileID: 21300000, guid: 9bc48fcafb758834db1cb0412a4297b6, type: 3}
@@ -2734,7 +2735,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: afe3dd8e5d746c84da523a35d09f1f25, type: 3}
   - {fileID: 21300000, guid: 22f9ee286f59c114599d2a83ada26319, type: 3}
   reyaSelectedFlair: {fileID: 1257049511}
-  qiTattooBg: {fileID: 0}
+  qiTattooBg: {fileID: 317022585437462665, guid: 448831571e0c9ac4a8fe6d2dfc073ced, type: 3}
   nayrTattooBg: {fileID: 0}
   urzaTattooBg: {fileID: 0}
   nuryTattooBg: {fileID: 0}
@@ -3500,6 +3501,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a6504ced6c3af54c8feb5343ae09b75, type: 2}
   - {fileID: 11400000, guid: 6c48b25a33c193e44995ed257972f4db, type: 2}
   - {fileID: 11400000, guid: 6911d179841287d4ba96e2aa7d3aee02, type: 2}
+  - {fileID: 11400000, guid: 1f51c9fa5c1ac1741b83cbec4ca1ae65, type: 2}
   - {fileID: 11400000, guid: ae620c6e4ff31c44bbfed036b9a47402, type: 2}
   - {fileID: 11400000, guid: e958868f451a6a04a917918973a0fc3c, type: 2}
   - {fileID: 11400000, guid: 1a8423ce423225a48bfa9109edd7b2ef, type: 2}
@@ -4089,7 +4091,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7591,7 +7593,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

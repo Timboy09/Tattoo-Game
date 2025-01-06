@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 9
   dialogues:
-  - Caught in an endless <#00FF00>CYCLE</color>, my thoughts <#00FF00>LOOPING</color>
-    and <#00FF00>SPIRALLING</color>, detached - the only extraterrestrial on this
-    <#00FF00>GLOBE</color>.
+  - Caught in an endless <#6c9a9a>CYCLE</color>, my thoughts <#6c9a9a>LOOPING</color>
+    and <#6c9a9a>SPIRALLING</color>, detached - the only extraterrestrial on this
+    <#6c9a9a>GLOBE</color>.
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0

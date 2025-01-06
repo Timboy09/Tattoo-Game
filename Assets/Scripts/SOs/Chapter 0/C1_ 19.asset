@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 10
   dialogues:
-  - '[Add your own Falir['
+  - '[Add your own Falir]'
   - Mentor
   - Friend
   - Ride or Die

@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 2
   dialogues:
-  - Evening will bring in more drunks. What will you do then?Evening will bring in
-    more drunks. What will you do then?
+  - Evening will bring in more drunks. What will you do then?
   - We can do the tattoo now or in the evening, your choice.
   branchAStartIndex: 0
   branchBStartIndex: 0
   branchCStartIndex: 0
-  branchEndIndex: 0
+  branchEndIndex: 28
   tattooShapes: 
-  forceBranchIndex: 0
+  forceBranchIndex: 1

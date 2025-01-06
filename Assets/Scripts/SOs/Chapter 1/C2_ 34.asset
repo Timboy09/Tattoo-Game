@@ -20,7 +20,7 @@ MonoBehaviour:
   - Tattoo?
   branchAStartIndex: 34
   branchBStartIndex: 36
-  branchCStartIndex: 38
+  branchCStartIndex: 37
   branchEndIndex: 38
   tattooShapes: 
-  forceBranchIndex: 0
+  forceBranchIndex: 1
